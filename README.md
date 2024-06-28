@@ -1,6 +1,6 @@
 Introducing our Islamic Hijri Calendar widget, offering a comprehensive date display with both Arabic and English numerals. Easily view Hijri month names alongside the year and navigate through months effortlessly.
 
-<img src="https://github.com/DevCodeSpace/islamic_hijri_calendar/master/assets/banner1.png" align="center" height="350" width="1500"/>
+<img src="[https://github.com/DevCodeSpace/islamic_hijri_calendar/master/assets/banner1.png](https://raw.githubusercontent.com/DevCodeSpace/islamic_hijri_calendar/main/assets/banner1.png?token=GHSAT0AAAAAACUGDHVCE7SHSE43Z57TPZWUZT6QAVA)" align="center" height="350" width="1500"/>
 
 ## Features
 
