@@ -1,9 +1,9 @@
 name: islamic_hijri_calendar
-description: Introducing our Islamic Hijri Calendar widget, offering a comprehensive date display with both Arabic and English numerals. Easily view Hijri month names alongside the year and navigate through months effortlessly.
-version: 0.0.1
+description: Islamic Hijri Calendar widget displays dates in Arabic and English numerals, shows Hijri month names and years, and allows effortless month navigation.
+version: 0.0.2
 homepage: https://github.com/DevCodeSpace/islamic_hijri_calendar
 issue_tracker: https://github.com/DevCodeSpace/islamic_hijri_calendar/issues
-documentation: https://pub.dev/documentation/islamic_hijri_calendar
+documentation: https://pub.dev/documentation/islamic_hijri_calendar/latest/
 
 environment:
   sdk: '>=3.4.3 <4.0.0'

@@ -17,7 +17,7 @@ Add dependency to your `pubspec.yaml` file & run Pub get
 
 ```yaml
 dependencies:
-  islamic_hijri_calendar: ^0.0.1
+  islamic_hijri_calendar: ^0.0.2
 ```
 And import package into your class file
 
