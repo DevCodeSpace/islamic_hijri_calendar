@@ -1,6 +1,10 @@
+## 0.0.3
+
+* Enhanced code documentation with DartDoc comments.
+
 ## 0.0.2
 
-* Update README.md
+* Update README.md.
 
 ## 0.0.1
 

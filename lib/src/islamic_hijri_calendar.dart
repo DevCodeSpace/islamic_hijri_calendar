@@ -40,7 +40,7 @@ class IslamicHijriCalendar extends StatefulWidget {
   ///set dates which are not included in current month should show disabled or enabled
   final bool? isDisablePreviousNextMonthDates;
 
-  IslamicHijriCalendar({
+  const IslamicHijriCalendar({
     super.key,
     this.highlightBorder = Colors.blue,
     this.defaultBorder = const Color(0xfff2f2f2),
@@ -159,13 +159,15 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
               deActiveDateBorderColor: widget.defaultBorder,
               style: textStyle,
               onSelectedEnglishDate: (selectedDate) {
-                if (widget.getSelectedEnglishDate != null)
+                if (widget.getSelectedEnglishDate != null) {
                   widget.getSelectedEnglishDate!(selectedDate);
+                }
                 setState(() {});
               },
               onSelectedHijriDate: (selectedDate) {
-                if (widget.getSelectedHijriDate != null)
+                if (widget.getSelectedHijriDate != null) {
                   widget.getSelectedHijriDate!(selectedDate);
+                }
               },
               isDisablePreviousNextMonthDates: widget.isDisablePreviousNextMonthDates!);
         },
@@ -181,7 +183,7 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
     viewmodel.adjustmentValue = widget.adjustmentValue;
 
     TextStyle textStyle = widget.isGoogleFont! ? GoogleFonts.getFont(widget.fontFamilyName!) :
-    widget.fontFamilyName!.isEmpty ? TextStyle() : TextStyle(fontFamily: widget.fontFamilyName!);
+    widget.fontFamilyName!.isEmpty ? const TextStyle() : TextStyle(fontFamily: widget.fontFamilyName!);
 
     return LayoutBuilder(builder: (context, constraints) {
 
