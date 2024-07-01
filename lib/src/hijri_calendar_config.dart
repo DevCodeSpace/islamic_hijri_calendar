@@ -2,7 +2,6 @@ import 'date_functions.dart';
 import 'hijri_month_week_names.dart';
 
 class HijriCalendarConfig {
-
   ///set default configuration for hijri calendar
   static String language = 'en';
   late int lengthOfMonth;

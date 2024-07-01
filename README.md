@@ -4,6 +4,7 @@ Introducing our Islamic Hijri Calendar widget, offering a comprehensive date dis
 
 ## Features
 
+* Users can set only the English calendar or show it with the Hijri calendar.
 * Shows both english day & arabic day.
 * Shows the Hijri month names along with the year.
 * set custom font families manually & google font as well.
@@ -17,7 +18,7 @@ Add dependency to your `pubspec.yaml` file & run Pub get
 
 ```yaml
 dependencies:
-  islamic_hijri_calendar: ^0.0.3
+  islamic_hijri_calendar: ^0.0.4
 ```
 And import package into your class file
 
@@ -29,6 +30,7 @@ import 'package:islamic_hijri_calendar/islamic_hijri_calendar.dart';
 
 ```dart
 IslamicHijriCalendar(
+   isHijriView: true, // allowing users to set either the English calendar only or display the Hijri calendar alongside the English calendar
    highlightBorder : Theme.of(context).colorScheme.primary, // Set selected date border color
    defaultBorder : Theme.of(context).colorScheme.onBackground.withOpacity(.1), // Set default date border color
    highlightTextColor : Theme.of(context).colorScheme.background, // Set today date text color            
@@ -51,6 +53,7 @@ IslamicHijriCalendar(
 
 | Property                        | Types               | Description                                                                       |
 |---------------------------------|---------------------|-----------------------------------------------------------------------------------|
+| isHijriView                 | bool?               | allowing users to set either the English calendar only or display the Hijri calendar alongside the English calendar                                                  |
 | highlightBorder                 | Color?              | Set selected date border color                                                    |
 | defaultBorder                   | Color?              | Set default date border color                                                     |
 | highlightTextColor              | Color?              | Set today date text color                                                         |

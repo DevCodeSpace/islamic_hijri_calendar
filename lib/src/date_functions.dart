@@ -1,14 +1,26 @@
 import 'dart:core';
 
 abstract class DateFunctions {
-
   ///Hijri numbers list
-  static const List<String> hijriNumbers = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩' ];
+  static const List<String> hijriNumbers = [
+    '٠',
+    '١',
+    '٢',
+    '٣',
+    '٤',
+    '٥',
+    '٦',
+    '٧',
+    '٨',
+    '٩'
+  ];
 
   ///get last date of current showed month
   static DateTime getLastDayOfCurrentMonth({required DateTime currentMonth}) {
-    DateTime firstDayOfNextMonth = DateTime(currentMonth.year, currentMonth.month + 1, 1);
-    DateTime lastDayOfCurrentMonth = firstDayOfNextMonth.subtract(const Duration(days: 1));
+    DateTime firstDayOfNextMonth =
+        DateTime(currentMonth.year, currentMonth.month + 1, 1);
+    DateTime lastDayOfCurrentMonth =
+        firstDayOfNextMonth.subtract(const Duration(days: 1));
     return lastDayOfCurrentMonth;
   }
 

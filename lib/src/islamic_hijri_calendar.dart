@@ -6,6 +6,8 @@ import 'hijri_date.dart';
 import 'hijri_view_model.dart';
 
 class IslamicHijriCalendar extends StatefulWidget {
+  ///allowing users to set either the English calendar only or display the Hijri calendar alongside the English calendar
+  final bool? isHijriView;
 
   ///set selected date border color
   final Color highlightBorder;
@@ -42,6 +44,7 @@ class IslamicHijriCalendar extends StatefulWidget {
 
   const IslamicHijriCalendar({
     super.key,
+    this.isHijriView = true,
     this.highlightBorder = Colors.blue,
     this.defaultBorder = const Color(0xfff2f2f2),
     this.highlightTextColor = Colors.white,
@@ -60,7 +63,6 @@ class IslamicHijriCalendar extends StatefulWidget {
 }
 
 class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
-
   HijriViewModel viewmodel = HijriViewModel();
   List<DateTime> days = [];
 
@@ -77,7 +79,6 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
 
   ///on pan update event check direction
   _onPanUpdate(DragUpdateDetails details) {
-
     if (details.delta.dx > 0) {
       direction = 'Right';
     } else if (details.delta.dx < 0) {
@@ -91,17 +92,26 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
 
   ///on pan gesture update current month
   _onPanEnd() {
-    switch (direction){
-      case "None":break;
-      case "Right":funcGetMonth(isPrevious: true);break;
-      case "Left":funcGetMonth(isPrevious: false);break;
-      case "Down":funcGetMonth(isPrevious: true);break;
-      case "Up":funcGetMonth(isPrevious: false);break;
+    switch (direction) {
+      case "None":
+        break;
+      case "Right":
+        funcGetMonth(isPrevious: true);
+        break;
+      case "Left":
+        funcGetMonth(isPrevious: false);
+        break;
+      case "Down":
+        funcGetMonth(isPrevious: true);
+        break;
+      case "Up":
+        funcGetMonth(isPrevious: false);
+        break;
     }
   }
 
   ///click events of previous & next button
-  funcGetMonth({required bool isPrevious}){
+  funcGetMonth({required bool isPrevious}) {
     isPrevious ? viewmodel.getPreviousMonth() : viewmodel.getNextMonth();
     setState(() {});
   }
@@ -134,7 +144,10 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
   }
 
   ///set calendar grid view
-  Widget funcCalendarDaysView({required TextStyle textStyle,required double rowHeight, required double fontSize}){
+  Widget funcCalendarDaysView(
+      {required TextStyle textStyle,
+      required double rowHeight,
+      required double fontSize}) {
     return GestureDetector(
       onPanUpdate: (details) => _onPanUpdate(details),
       onPanEnd: (details) => _onPanEnd(),
@@ -149,6 +162,7 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
         itemBuilder: (BuildContext context, int index) {
           ///single day block
           return viewmodel.getDate(
+              isHijriView: widget.isHijriView!,
               fontSize: fontSize,
               defaultTextColor: widget.defaultTextColor,
               highlightTextColor: widget.highlightTextColor,
@@ -169,7 +183,8 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                   widget.getSelectedHijriDate!(selectedDate);
                 }
               },
-              isDisablePreviousNextMonthDates: widget.isDisablePreviousNextMonthDates!);
+              isDisablePreviousNextMonthDates:
+                  widget.isDisablePreviousNextMonthDates!);
         },
       ),
     );
@@ -177,16 +192,17 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
 
   @override
   Widget build(BuildContext context) {
-
     ///get total days in current month with previous(first week) & next months(last week) dates
     days = _getDaysInMonth(viewmodel.currentDisplayMonthYear);
     viewmodel.adjustmentValue = widget.adjustmentValue;
 
-    TextStyle textStyle = widget.isGoogleFont! ? GoogleFonts.getFont(widget.fontFamilyName!) :
-    widget.fontFamilyName!.isEmpty ? const TextStyle() : TextStyle(fontFamily: widget.fontFamilyName!);
+    TextStyle textStyle = widget.isGoogleFont!
+        ? GoogleFonts.getFont(widget.fontFamilyName!)
+        : widget.fontFamilyName!.isEmpty
+            ? const TextStyle()
+            : TextStyle(fontFamily: widget.fontFamilyName!);
 
     return LayoutBuilder(builder: (context, constraints) {
-
       double parentWidth = constraints.maxWidth;
       double parentHeight = constraints.maxHeight;
 
@@ -212,7 +228,6 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
               ///navigate to previous month button
               GestureDetector(
                 onTap: () => funcGetMonth(isPrevious: true),
@@ -220,14 +235,12 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                   width: parentWidth / 7,
                   padding: const EdgeInsets.only(top: 5, bottom: 5),
                   alignment: Alignment.center,
-                  child: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      size: fontSize,
-                      color: widget.defaultTextColor),
+                  child: Icon(Icons.arrow_back_ios_new_rounded,
+                      size: fontSize, color: widget.defaultTextColor),
                 ),
               ),
 
-              ///rest of the space set  english month name & year
+              ///rest of the space set english month name & year
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -239,17 +252,18 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                           return Theme(
                             data: ThemeData(
                               useMaterial3: false,
-                              colorScheme: Theme.of(context).brightness == Brightness.dark
+                              colorScheme: Theme.of(context).brightness ==
+                                      Brightness.dark
                                   ? ColorScheme.dark(
-                                primary: widget.highlightBorder,
-                                onPrimary: widget.highlightTextColor,
-                                onSurface: widget.defaultTextColor,
-                              )
+                                      primary: widget.highlightBorder,
+                                      onPrimary: widget.highlightTextColor,
+                                      onSurface: widget.defaultTextColor,
+                                    )
                                   : ColorScheme.light(
-                                primary: widget.highlightBorder,
-                                onPrimary: widget.highlightTextColor,
-                                onSurface: widget.defaultTextColor,
-                              ),
+                                      primary: widget.highlightBorder,
+                                      onPrimary: widget.highlightTextColor,
+                                      onSurface: widget.defaultTextColor,
+                                    ),
                             ),
                             child: DatePickerDialog(
                               initialDate: viewmodel.currentDisplayMonthYear,
@@ -259,7 +273,8 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                           );
                         },
                       );
-                      if (pickedDate != null && pickedDate != viewmodel.todayDate) {
+                      if (pickedDate != null &&
+                          pickedDate != viewmodel.todayDate) {
                         setState(() {
                           viewmodel.selectedDate = pickedDate;
                           viewmodel.currentDisplayMonthYear = pickedDate;
@@ -268,7 +283,8 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                     },
                     child: Center(
                       child: Text(
-                        DateFormat('MMM yyyy').format(viewmodel.currentDisplayMonthYear),
+                        DateFormat('MMM yyyy')
+                            .format(viewmodel.currentDisplayMonthYear),
                         style: textStyle.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: fontSize,
@@ -286,31 +302,30 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                   width: parentWidth / 7,
                   padding: const EdgeInsets.only(top: 5, bottom: 5),
                   alignment: Alignment.center,
-                  child: Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      size: fontSize,
-                      color: widget.defaultTextColor),
+                  child: Icon(Icons.arrow_forward_ios_rounded,
+                      size: fontSize, color: widget.defaultTextColor),
                 ),
               ),
             ],
           ),
 
           ///show hijri calendar current month name & year
-          Container(
-            padding: const EdgeInsets.all(10),
-            width: MediaQuery.of(context).size.width,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: widget.highlightBorder,
-            ),
-            child: Text(
-              "${viewmodel.getHijriMonthYear()} - ${HijriCalendarConfig.fromDate(viewmodel.currentDisplayMonthYear).hYear}",
-              textAlign: TextAlign.center,
-              style: textStyle.copyWith(
-                  fontSize: fontSize,
-                  color: widget.highlightTextColor),
-            ),
-          ),
+          !widget.isHijriView!
+              ? const SizedBox()
+              : Container(
+                  padding: const EdgeInsets.all(10),
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: widget.highlightBorder,
+                  ),
+                  child: Text(
+                    "${viewmodel.getHijriMonthYear()} - ${HijriCalendarConfig.fromDate(viewmodel.currentDisplayMonthYear).hYear}",
+                    textAlign: TextAlign.center,
+                    style: textStyle.copyWith(
+                        fontSize: fontSize, color: widget.highlightTextColor),
+                  ),
+                ),
 
           ///show week name Mon to Sun in a row
           Container(
@@ -321,10 +336,9 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
                 children: List.generate(viewmodel.headerOfDay.length, (index) {
                   return Expanded(
                     child: Center(
-                      child: Text(
-                          viewmodel.headerOfDay[index],
+                      child: Text(viewmodel.headerOfDay[index],
                           style: textStyle.copyWith(
-                              fontSize: fontSize-2,
+                              fontSize: fontSize - 2,
                               color: widget.defaultTextColor)),
                     ),
                   );
@@ -334,22 +348,26 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
           ),
 
           ///in a rest of the space show calendar
-          parentHeight == double.infinity ?
+          parentHeight == double.infinity
+              ? funcCalendarDaysView(
+                  textStyle: textStyle,
+                  rowHeight: minRowHeight,
+                  fontSize: fontSize)
+              : Expanded(child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double screenHeight = constraints.maxHeight;
+                    double calculatedRowHeight =
+                        screenHeight / (days.length / 7);
+                    double rowHeight = calculatedRowHeight < minRowHeight
+                        ? minRowHeight
+                        : calculatedRowHeight;
 
-          funcCalendarDaysView(textStyle: textStyle,rowHeight: minRowHeight,fontSize: fontSize)
-              :
-          Expanded(
-              child:
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  double screenHeight = constraints.maxHeight;
-                  double calculatedRowHeight = screenHeight / (days.length/7);
-                  double rowHeight = calculatedRowHeight < minRowHeight ? minRowHeight : calculatedRowHeight;
-
-                  return  funcCalendarDaysView(textStyle: textStyle,rowHeight: rowHeight,fontSize: fontSize);
-                },)
-
-          ),
+                    return funcCalendarDaysView(
+                        textStyle: textStyle,
+                        rowHeight: rowHeight,
+                        fontSize: fontSize);
+                  },
+                )),
         ],
       );
     });

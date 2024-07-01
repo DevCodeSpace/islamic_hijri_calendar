@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Users can set only the English calendar or show it with the Hijri calendar.
+
 ## 0.0.3
 
 * Enhanced code documentation with DartDoc comments.
