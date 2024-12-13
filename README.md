@@ -65,3 +65,9 @@ IslamicHijriCalendar(
 | getSelectedEnglishDate          | return selectedDate | returns the date selected by user                                                                          |
 | getSelectedHijriDate            | return selectedDate | returns the date selected by user in Hijri format                                            |
 | isDisablePreviousNextMonthDates | bool?               | Set dates which are not included in current month should show disabled or enabled |
+
+## 🤝 Contributing
+[![](https://raw.githubusercontent.com/DevCodeSpace/islamic_hijri_calendar/refs/heads/main/assets/contributors.png)](https://github.com/DevCodeSpace/islamic_hijri_calendar/graphs/contributors)
+
+---
+>Made with ❤️ by the DevCodeSpace
