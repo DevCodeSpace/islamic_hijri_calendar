@@ -1,18 +1,20 @@
 name: islamic_hijri_calendar
-description: Islamic Hijri Calendar widget displays dates in Arabic and English numerals, shows Hijri month names and years, and allows effortless month navigation.
+description:
+  Islamic Hijri Calendar widget displays dates in Arabic and English numerals,
+  shows Hijri month names and years, and allows effortless month navigation.
 version: 0.0.4
 homepage: https://github.com/DevCodeSpace/islamic_hijri_calendar
 issue_tracker: https://github.com/DevCodeSpace/islamic_hijri_calendar/issues
 documentation: https://pub.dev/documentation/islamic_hijri_calendar/latest/
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ">=3.4.3 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.19.0
+  intl: ^0.20.2
   google_fonts: ^6.2.1
 
 dev_dependencies:
@@ -21,10 +23,14 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 screenshots:
-  - description: 'This image shows example of islamic hijri calendar with orange color variant'
+  - description:
+      "This image shows example of islamic hijri calendar with orange color
+      variant"
     path: screenshots/screenshot1.png
 
-  - description: 'This image shows example of islamic hijri calendar with purple color variant'
+  - description:
+      "This image shows example of islamic hijri calendar with purple color
+      variant"
     path: screenshots/screenshot2.png
 
 # For information on the generic Dart part of this file, see the
