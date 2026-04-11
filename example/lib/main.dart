@@ -45,7 +45,7 @@ class _HijriCalendarExampleState extends State<HijriCalendarExample> {
           defaultBorder: Theme.of(context)
               .colorScheme
               .onSurface
-              .withOpacity(.1), // Set default date border color
+              .withValues(alpha: 0.1), // Set default date border color
           highlightTextColor: Theme.of(context)
               .colorScheme
               .surface, // Set today date text color

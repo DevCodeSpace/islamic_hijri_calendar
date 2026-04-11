@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'date_functions.dart';
 import 'hijri_calendar_config.dart';
 import 'hijri_date.dart';
@@ -119,7 +120,7 @@ class HijriViewModel {
                       fontSize: fontSize,
                       color: !isCurrentMonthDays
                           ? (isDisablePreviousNextMonthDates
-                              ? defaultTextColor.withOpacity(.1)
+                              ? defaultTextColor.withValues(alpha: 0.1)
                               : defaultTextColor)
                           : defaultTextColor),
             ),
@@ -144,7 +145,8 @@ class HijriViewModel {
                                   fontSize: fontSize,
                                   color: !isCurrentMonthDays
                                       ? (isDisablePreviousNextMonthDates
-                                          ? defaultTextColor.withOpacity(.1)
+                                          ? defaultTextColor.withValues(
+                                              alpha: 0.1)
                                           : defaultTextColor)
                                       : defaultTextColor) ??
                               TextStyle(
@@ -177,7 +179,7 @@ class HijriViewModel {
   }
 
   ///show previous month
-  getPreviousMonth() {
+  void getPreviousMonth() {
     int year = currentDisplayMonthYear.year;
     int month = currentDisplayMonthYear.month - 1;
 
@@ -196,7 +198,7 @@ class HijriViewModel {
   }
 
   ///show next month
-  getNextMonth() {
+  void getNextMonth() {
     int year = currentDisplayMonthYear.year;
     int month = currentDisplayMonthYear.month + 1;
 

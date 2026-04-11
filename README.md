@@ -1,6 +1,6 @@
 Introducing our Islamic Hijri Calendar widget, offering a comprehensive date display with both Arabic and English numerals. Easily view Hijri month names alongside the year and navigate through months effortlessly.
 
-<img src="https://raw.githubusercontent.com/DevCodeSpace/islamic_hijri_calendar/main/assets/banner1.png"/>
+ <img src="assets/banner1.png" alt="Dart Extensions Pro contributors" />
 
 ## Features
 
@@ -18,7 +18,7 @@ Add dependency to your `pubspec.yaml` file & run Pub get
 
 ```yaml
 dependencies:
-  islamic_hijri_calendar: ^0.0.4
+  islamic_hijri_calendar: ^0.0.5
 ```
 And import package into your class file
 
@@ -32,7 +32,7 @@ import 'package:islamic_hijri_calendar/islamic_hijri_calendar.dart';
 IslamicHijriCalendar(
    isHijriView: true, // allowing users to set either the English calendar only or display the Hijri calendar alongside the English calendar
    highlightBorder : Theme.of(context).colorScheme.primary, // Set selected date border color
-   defaultBorder : Theme.of(context).colorScheme.onBackground.withOpacity(.1), // Set default date border color
+   defaultBorder : Theme.of(context).colorScheme.onBackground.withValues(alpha:0.1), // Set default date border color
    highlightTextColor : Theme.of(context).colorScheme.background, // Set today date text color            
    defaultTextColor : Theme.of(context).colorScheme.onBackground, //Set others dates text color            
    defaultBackColor : Theme.of(context).colorScheme.background, // Set default date background color            
@@ -66,8 +66,9 @@ IslamicHijriCalendar(
 | getSelectedHijriDate            | return selectedDate | returns the date selected by user in Hijri format                                            |
 | isDisablePreviousNextMonthDates | bool?               | Set dates which are not included in current month should show disabled or enabled |
 
-## 🤝 Contributing
-[![](https://raw.githubusercontent.com/DevCodeSpace/islamic_hijri_calendar/refs/heads/main/assets/contributors.png)](https://github.com/DevCodeSpace/islamic_hijri_calendar/graphs/contributors)
+## Code Contributors
+
+<img src="assets/contributors.png" width="250" alt="Dart Extensions Pro contributors" />
 
 ---
 >Made with ❤️ by the DevCodeSpace

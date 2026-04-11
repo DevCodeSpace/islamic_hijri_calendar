@@ -1,3 +1,3 @@
-library islamic_hijri_calendar;
+library;
 
 export 'src/islamic_hijri_calendar.dart';

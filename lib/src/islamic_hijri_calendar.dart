@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+
 import 'hijri_calendar_config.dart';
 import 'hijri_date.dart';
 import 'hijri_view_model.dart';
@@ -78,7 +79,7 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
   String direction = 'None';
 
   ///on pan update event check direction
-  _onPanUpdate(DragUpdateDetails details) {
+  void _onPanUpdate(DragUpdateDetails details) {
     if (details.delta.dx > 0) {
       direction = 'Right';
     } else if (details.delta.dx < 0) {
@@ -91,7 +92,7 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
   }
 
   ///on pan gesture update current month
-  _onPanEnd() {
+  void _onPanEnd() {
     switch (direction) {
       case "None":
         break;
@@ -111,7 +112,7 @@ class _HijriCalendarWidgetsState extends State<IslamicHijriCalendar> {
   }
 
   ///click events of previous & next button
-  funcGetMonth({required bool isPrevious}) {
+  void funcGetMonth({required bool isPrevious}) {
     isPrevious ? viewmodel.getPreviousMonth() : viewmodel.getNextMonth();
     setState(() {});
   }

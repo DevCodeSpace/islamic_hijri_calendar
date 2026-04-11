@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Updated all package dependencies to their latest compatible versions.
+
 ## 0.0.4
 
 * Users can set only the English calendar or show it with the Hijri calendar.
